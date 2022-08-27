@@ -1,21 +1,30 @@
- <video width="512" height="512" id="vid">
-  <source src="content/a photograph of an astronaut riding a horse_1761738902_1.mp4" type="video/mp4">
-</video> 
-<div id="widget">
-  <div id="markerbounds">
-    <div id="box">
-      <div id="marker"></div>
+<body>
+
+<div class="content">
+    <video width="512" height="512" id="vid">
+      <source src="content/a photograph of an astronaut riding a horse_1761738902_1.mp4" type="video/mp4">
+    </video> 
+    <div id="widget">
+      <div id="markerbounds">
+        <div id="box">
+          <div id="marker"></div>
+        </div>
+      </div>
+      <div>
+        <span id="coord">
+            <p> 
+                Steps: <span id="steps"></span><br>
+                Guidance scale: <span id="scale"></span>
+            </p>
+        </span>
+      </div>
     </div>
-  </div>
-  <div>
-    <span id="coord">
-		<p> 
-			Steps: <span id="steps"></span><br>
-			Guidance scale: <span id="scale"></span>
-		</p>
-	</span>
-  </div>
 </div>
+
+</body>  
+ 
+ 
+
 
 <style>
 #markerbounds {
@@ -46,10 +55,17 @@
 #widget {
   border: 1px solid black;
 }
+
+.content {
+  max-width: 500px;
+  margin: auto;
+}
+
 </style>
 
 <script src="scripts/jquery-3.6.1.min.js"></script>
 <script src="scripts/jquery-ui.min.js"></script>
+<script src="scripts/jquery.ui.touch-punch.min.js"></script>
 <script>
 // use document.getElementById('id').innerHTML = 'text' to change text in a paragraph, for example.
 
@@ -71,12 +87,12 @@ var slider = {
   
   display_position: function() {
     document.getElementById("steps").innerHTML = (slider.position.x + slider.xoff).toString();
-	document.getElementById("scale").innerHTML = (slider.position.y + slider.yoff).toString();
-	
-	let frame = (slider.position.y * slider.round_factor.y) + (slider.position.x * slider.round_factor.x) * (slider.ymax * slider.round_factor.y + 1);
-	console.log(frame);
-	let frameTime = 1 / 15;
-	let vid = $('#vid')[0];
+    document.getElementById("scale").innerHTML = (slider.position.y + slider.yoff).toString();
+    
+    let frame = (slider.position.y * slider.round_factor.y) + (slider.position.x * slider.round_factor.x) * (slider.ymax * slider.round_factor.y + 1);
+    console.log(frame);
+    let frameTime = 1 / 15;
+    let vid = $('#vid')[0];
     vid.currentTime = frameTime * (frame + 1/2)
   },
   
@@ -94,11 +110,11 @@ var slider = {
     slider.marker_size = marker_size;
     slider.height = y_size;
     slider.width = x_size;
-	slider.xoff = 5;
-	slider.yoff = 1
+    slider.xoff = 5;
+    slider.yoff = 1
     slider.xmax = xmax - slider.xoff;
     slider.ymax = ymax - slider.yoff;
-	
+    
     slider.round_factor = {
       x: 0.2,
       y: 2,
@@ -117,8 +133,8 @@ var slider = {
     $("#marker").css({
       "width": marker_size.toString() + 'px',
       "height": marker_size.toString() + 'px',
-	  "top": y_size - marker_size / 2,
-	  "left":  - marker_size / 2 
+      "top": y_size - marker_size / 2,
+      "left":  - marker_size / 2 
     });
     
     $("#widget").css({
