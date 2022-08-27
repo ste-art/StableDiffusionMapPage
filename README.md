@@ -1,5 +1,5 @@
  <video width="512" height="512" id="vid">
-  <source src="videos/a photograph of an astronaut riding a horse_1761738902_1.mp4" type="video/mp4">
+  <source src="content/a photograph of an astronaut riding a horse_1761738902_1.mp4" type="video/mp4">
 </video> 
 <div id="widget">
   <div id="markerbounds">
@@ -48,8 +48,8 @@
 }
 </style>
 
-<script src="jquery-3.6.1.min.js"></script>
-<script src="jquery-ui.min.js"></script>
+<script src="scripts/jquery-3.6.1.min.js"></script>
+<script src="scripts/jquery-ui.min.js"></script>
 <script>
 // use document.getElementById('id').innerHTML = 'text' to change text in a paragraph, for example.
 
@@ -140,11 +140,6 @@ $("#marker").draggable({
   },
 });
 
-//syntax for rendering is:
-//  slider.render(width, height, width-range, height-range, marker size, output decimal places)
-
 slider.draw(490,490,100,20,20,2);
 
-// check to make sure the defaults work:
-//slider.draw();
 </script>
